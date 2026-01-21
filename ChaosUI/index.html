@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
   <title>Controlled Chaos UI</title>
+  <meta charset="UTF-8" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-  <h1 id="title">No hagas click.</h1>
+  <div id="chaos-core">
+    <h1 id="title">No hagas click.</h1>
 
-  <button id="chaosBtn">Click inocente</button>
-  
-  <div id="progress">
-    <div id="bar"></div>
+    <div class="arena">
+      <button id="chaosBtn">Click inocente</button>
+      <button class="fakeBtn">Reset</button>
+      <button class="fakeBtn">Ayuda</button>
+    </div>
+
+    <div id="progress">
+      <div id="bar"></div>
+    </div>
+
+    <p id="message">Todo está bajo control… por ahora.</p>
   </div>
-
-
-  <p id="message">Todo está bajo control… por ahora.</p>
 
   <script src="script.js"></script>
 </body>
+
 </html>

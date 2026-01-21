@@ -1,5 +1,52 @@
+#bar {
+  height: 100%;
+  width: 0%;
+  background: red;
+  transition: width 0.3s;
+}
+
 .shake {
   animation: shake 0.4s infinite;
+}
+
+.existential {
+  opacity: 0.2;
+  filter: blur(1px);
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+#progress {
+  width: 200px;
+  height: 8px;
+  background: #ddd;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.glitch {
+  filter: blur(2px) contrast(150%);
+}
+
+.breathe {
+  animation: breathe 3s infinite ease-in-out;
+}
+
+.explode {
+  box-shadow:
+    0 0 10px red,
+    20px -10px yellow,
+    -20px 10px magenta,
+    10px 20px cyan,
+    -10px -20px lime;
+}
+
+.fade {
+  opacity: 0.3;
 }
 
 @keyframes shake {
@@ -10,35 +57,65 @@
   100% { transform: translate(0); }
 }
 
-.glitch {
-  filter: blur(2px) contrast(150%);
-}
-
-.fade {
-  opacity: 0.3;
-}
-.explode {
-  box-shadow:
-    0 0 10px red,
-    20px -10px yellow,
-    -20px 10px magenta,
-    10px 20px cyan,
-    -10px -20px lime;
-}
-#progress {
-  width: 200px;
-  height: 8px;
-  background: #ddd;
-  margin-top: 20px;
-  overflow: hidden;
-}
-
-#bar {
-  height: 100%;
-  width: 0%;
-  background: red;
-  transition: width 0.3s;
-}
 .vignette {
   box-shadow: inset 0 0 200px rgba(0,0,0,0.6);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  transition: all 0.4s;
+}
+
+#chaos-core {
+  width: 420px;
+  min-height: 360px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.core-chaos {
+  filter: blur(1px) contrast(130%);
+}
+
+.arena {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin: 20px 0;
+  border: 2px dashed rgba(0,0,0,0.2);
+  overflow: visible; /* importante */
+}
+
+button {
+  position: absolute;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.fakeBtn {
+  background: #eee;
+}
+
+.core-chaos {
+  filter: blur(1px) contrast(130%);
+}
+.core-chaos {
+  animation: coreWarp 0.8s infinite alternate;
+}
+
+@keyframes coreWarp {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.05) rotate(1deg);
+  }
 }
