@@ -1,105 +1,87 @@
-const body = document.body;
-let amenazaCierre = false;
+let caos = 0;
 let ultimoMovimiento = Date.now();
 let ultimoClick = Date.now();
+let amenazaCierre = false;
+
+const body = document.body;
 const core = document.getElementById("chaos-core");
-let caosVivo = 0;
-
-
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 const button = document.getElementById("chaosBtn");
 const title = document.getElementById("title");
 const message = document.getElementById("message");
 const bar = document.getElementById("bar");
 
-const arena = document.querySelector(".arena");
 const fakeBtns = document.querySelectorAll(".fakeBtn");
 
-let caos = Number(localStorage.getItem("caos")) || 0;
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 document.addEventListener("mousemove", () => {
   ultimoMovimiento = Date.now();
 });
 
 button.addEventListener("mouseenter", () => {
-  if (caos >= 2) caos++;
+  if (caos > 1) caos += 0.5;
 });
 
-button.addEventListener("click", () => {
-  caos++;
-  ultimoClick = Date.now();
-  localStorage.setItem("caos", caos);
-  sonido();
-  aplicarCaos();
+fakeBtns.forEach(b => {
+  b.addEventListener("mouseenter", () => {
+    caos += 0.2;
+  });
 });
+
+
+fakeBtns.forEach(btn => {
+  btn.addEventListener("mouseenter", () => {
+    caos += 0.2;
+  });
+
+  btn.addEventListener("click", () => {
+    caos += 3;
+    message.textContent = "Elegiste mal.";
+    sonido();
+  });
+});
+
 
 function loop() {
-  const ahora = Date.now();
-
-  // caos autónomo
-  caosVivo = Math.sin(Date.now() / 300) * caos;
-
-  if (ahora - ultimoMovimiento > 3000) {
-    caos += 0.05;
-  }
-
-  if (ahora - ultimoClick > 6000 && caos > 0) {
-    caos -= 0.02;
-  }
 
   aplicarCaos();
   requestAnimationFrame(loop);
 }
 
+
 function aplicarCaos() {
-    function moverElemento(el, intensidad = 1) {
-  const ruido = Math.sin(Date.now() / 100 + Math.random());
-  const x = ruido * 120 * intensidad;
-  const y = Math.cos(Date.now() / 120 + Math.random()) * 80 * intensidad;
-  const r = ruido * 90;
 
-  el.style.transform = `
-    translate(${x}px, ${y}px)
-    rotate(${r}deg)
-    scale(${1 + Math.abs(ruido) * 0.3})
-  `;
-}
+  moverElemento(button, caos);
 
-    
-    core.classList.toggle("core-chaos", caos >= 3);
-
-moverElemento(button, caos);
-
-fakeBtns.forEach((btn, i) => {
-  moverElemento(btn, caos + i * 0.5);
-});
-
-
+  fakeBtns.forEach((btn, i) => {
+    moverElemento(btn, caos + i * 0.7);
+  });
 
   body.style.backgroundColor = randomColor();
   body.style.color = randomColor();
 
   title.style.fontSize = `${2 + caos * 0.2}rem`;
-
-  body.classList.toggle("shake", caos >= 4);
-  body.classList.toggle("glitch", caos >= 6);
-
   message.textContent = juicio(caos);
 
-  core.classList.toggle("core-chaos", caos >= 6);
+if (caos > 2) body.classList.add("shake");
+if (caos > 4) body.classList.add("glitch");
+if (caos > 6) core.classList.add("core-chaos");
+if (caos > 8) button.classList.add("explode");
+if (caos > 12) button.classList.add("existential");
 
+
+  efectosExtra();
 }
 
 function efectosExtra() {
   bar.style.width = `${Math.min(caos * 12, 100)}%`;
 
-  body.classList.toggle("breathe", caos >= 5);
-  body.classList.toggle("vignette", caos >= 6);
-  button.classList.toggle("explode", caos >= 7);
-  button.classList.toggle("existential", caos >= 7);
+  body.classList.toggle("breathe", caos > 5);
+  body.classList.toggle("vignette", caos > 6);
+  button.classList.toggle("existential", caos > 7);
 
-  if (caos === 6 && !amenazaCierre) {
+  if (caos > 6 && !amenazaCierre) {
     amenazaCierre = true;
     message.textContent = "Error crítico. Cerrando pestaña…";
     setTimeout(() => {
@@ -107,45 +89,24 @@ function efectosExtra() {
     }, 1500);
   }
 
-  if (caos === 10) {
-    body.innerHTML = "<h1>Fin.</h1><p>Ahora puedes descansar.</p>";
-    setTimeout(() => location.reload(), 2000);
-  }
-
   clonarBoton();
 }
 
-function moverBoton() {
-  button.style.transform =
-    `translate(${Math.sin(caos) * 120}px, ${Math.cos(caos) * 120}px)
-     rotate(${caos * 8}deg)`;
+
+function moverElemento(el, intensidad = 1) {
+  const t = Date.now() / 80;
+  const ruido = Math.sin(t + Math.random());
+
+  const x = ruido * 120 * intensidad;
+  const y = Math.cos(t * 0.9) * 90 * intensidad;
+  const r = ruido * 120;
+
+  el.style.transform = `
+    translate(${x}px, ${y}px)
+    rotate(${r}deg)
+    scale(${1 + Math.abs(ruido) * 0.4})
+  `;
 }
-
-fakeBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-  caos += 1.5;
-  ultimoClick = Date.now();
-  localStorage.setItem("caos", caos);
-
-  for (let i = 0; i < 5; i++) {
-    setTimeout(aplicarCaos, i * 60);
-  }
-
-  sonido();
-});
-});
-
-fakeBtns.forEach(btn => {
-  btn.addEventListener("mouseenter", () => {
-    caos += 0.3;
-  });
-
-  btn.addEventListener("click", () => {
-    caos += 2;
-    message.textContent = "Elegiste mal.";
-  });
-});
-
 
 function juicio(n) {
   const frases = [
@@ -159,7 +120,7 @@ function juicio(n) {
     "Tú tampoco.",
     "Gracias por participar."
   ];
-  return frases[Math.min(n, frases.length - 1)];
+  return frases[Math.min(Math.floor(n), frases.length - 1)];
 }
 
 function sonido() {
@@ -176,7 +137,7 @@ function randomColor() {
 }
 
 function clonarBoton() {
-  if (caos === 5 || caos === 8) {
+  if (Math.floor(caos) === 5 || Math.floor(caos) === 8) {
     const c = button.cloneNode(true);
     c.textContent = "Este no";
     c.onclick = () => {
