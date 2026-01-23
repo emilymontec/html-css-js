@@ -290,6 +290,80 @@ nav {
     }
 }
 
+/* Sección Herramientas / Tiendas */
+.tools {
+    padding: 100px 20px;
+    text-align: center;
+    background-color: var(--bg-dark);
+}
+
+.tools-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tools h2 {
+    font-size: 50px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.tools p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+/* Contenedor de insignias */
+.store-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Importante para que no se corten en móvil */
+    gap: 15px;
+}
+
+/* Estilo de los botones de tienda (Badges) */
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px; /* Espacio para el borde */
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.badge img {
+    height: 45px; /* Altura uniforme para todos los logos */
+    width: auto;
+    display: block;
+}
+
+.badge:hover {
+    border-color: var(--text-white);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .tools {
+        padding: 60px 20px;
+    }
+    
+    .store-badges {
+        gap: 10px;
+    }
+    
+    .badge img {
+        height: 40px; /* Logos ligeramente más pequeños en móvil */
+    }
+}
+
 /* Sección de Proyectos */
 .projects {
     padding: 100px 50px;
