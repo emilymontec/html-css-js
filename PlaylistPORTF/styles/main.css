@@ -188,7 +188,7 @@ nav {
 }
 
 .about-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: 50px;
     font-weight: 900;
     margin-bottom: 50px;
     text-align: left; /* Título alineado a la izquierda */
@@ -287,5 +287,114 @@ nav {
     .profile-mockup {
         transform: rotate(0); /* Quitamos rotación en móvil para evitar scroll horizontal */
         max-width: 300px;
+    }
+}
+
+/* Sección de Proyectos */
+.projects {
+    padding: 100px 50px;
+}
+
+.projects-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.projects-title {
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+/* Grid de Proyectos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Estilo Base de la Tarjeta */
+.project-card {
+    border-radius: 35px;
+    padding: 30px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor de la Imagen dentro de la tarjeta */
+.card-image {
+    width: 100%;
+    max-width: 200px;
+    height: 400px; /* Altura para simular el teléfono */
+    background: #000;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Información de la Tarjeta */
+.card-info {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.card-info h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.card-info p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+/* Colores de las Tarjetas (Degradados de la imagen) */
+.card-red {
+    background: linear-gradient(180deg, #a4161a 0%, #160a0a 100%);
+}
+
+.card-green {
+    background: linear-gradient(180deg, #1b4332 0%, #081c15 100%);
+}
+
+.card-blue {
+    background: linear-gradient(180deg, #0056b3 0%, #001233 100%);
+}
+
+.card-purple {
+    background: linear-gradient(180deg, #7b2cbf 0%, #240046 100%);
+}
+
+/* Ajustes Responsive */
+@media (max-width: 768px) {
+    .projects {
+        padding: 50px 20px;
+    }
+    
+    .card-blue {
+        transform: scale(1);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
     }
 }
