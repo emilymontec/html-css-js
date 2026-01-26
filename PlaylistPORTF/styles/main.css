@@ -119,8 +119,7 @@ nav {
 
 .btn-white {
     padding: 0px 10px;
-    background-color: rgb(0, 0, 0); /* Corregido: antes estaba en negro */
-    color: black;
+    background-color: black
 }
 
 .btn:hover {
@@ -253,43 +252,6 @@ nav {
     letter-spacing: 2px;
 }
 
-/* --- RESPONSIVE --- */
-
-@media (max-width: 968px) {
-    .about-grid {
-        grid-template-columns: 1fr; /* Una sola columna en tablets/móvil */
-        text-align: center;
-    }
-
-    .about-title {
-        text-align: center;
-    }
-
-    .about-image {
-        display: flex;
-        justify-content: center;
-        order: 1; /* Imagen primero */
-    }
-
-    .about-text {
-        order: 2; /* Texto después */
-        align-items: center;
-    }
-
-    .about-text p {
-        text-align: center;
-    }
-
-    .about-stats {
-        justify-content: center;
-    }
-
-    .profile-mockup {
-        transform: rotate(0); /* Quitamos rotación en móvil para evitar scroll horizontal */
-        max-width: 300px;
-    }
-}
-
 /* Sección Herramientas / Tiendas */
 .tools {
     padding: 100px 20px;
@@ -347,21 +309,6 @@ nav {
     border-color: var(--text-white);
     background-color: rgba(255, 255, 255, 0.05);
     transform: translateY(-5px);
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .tools {
-        padding: 60px 20px;
-    }
-    
-    .store-badges {
-        gap: 10px;
-    }
-    
-    .badge img {
-        height: 40px; /* Logos ligeramente más pequeños en móvil */
-    }
 }
 
 /* Sección de Proyectos */
@@ -458,17 +405,93 @@ nav {
     background: linear-gradient(180deg, #7b2cbf 0%, #240046 100%);
 }
 
-/* Ajustes Responsive */
+/* Responsive */
 @media (max-width: 768px) {
-    .projects {
-        padding: 50px 20px;
-    }
-    
-    .card-blue {
-        transform: scale(1);
+    header {
+        padding: 15px 20px;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr; /* Una columna en móvil */
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding-bottom: 40px;
+    }
+    
+    .hero-visuals {
+        display: none;
+    }
+    
+    .about {
+        padding-top: 80px;
+    }
+
+    .about-title {
+        margin-bottom: 30px;
+    }
+
+    .about-stats {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .card-image {
+        height: 300px;
+        max-width: 180px;
+    }
+
+    .card-info {
+        text-align: center;
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .profile-mockup {
+        margin: 0 auto;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-visuals {
+        height: 320px;
+        margin-bottom: 40px;
+    }
+
+    .mockup {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    .mockup-third,
+    .mockup-secondary {
+        display: none; /* matamos cartas secundarias en móvil */
+    }
+
+    .mockup-main {
+        top: 0;
+        right: auto;
+    }
+    
+    .about {
+        padding-top: 60px;
     }
 }
