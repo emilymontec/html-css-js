@@ -1,17 +1,18 @@
 :root {
-    --primary-blue: #0047FF;
-    --bg-color: #f4f4f7;
-    --card-white: #ffffff;
-    --text-dark: #1a1a1a;
-    --transition: all 0.3s ease;
+    --soft-pink: #f8c3d3;
+    --sky-blue: #67c6fe;
+    --dark-accent: #1e293b;
+    --bg-light: #fdfeff;
+    --white: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-color);
-    font-family: 'Inter', sans-serif;
-    color: var(--text-dark);
+    background-color: var(--bg-light);
+    font-family: 'Outfit', sans-serif;
+    color: var(--dark-accent);
     display: flex;
     justify-content: center;
     padding: 40px 20px;
@@ -22,22 +23,22 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 }
 
 .card {
-    background: var(--card-white);
-    padding: 25px;
-    border-radius: 24px;
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    background: var(--white);
+    padding: 30px;
+    border-radius: 32px;
+    border: 2px solid #f0f0f0;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.02);
 }
 
 /* Hero Section */
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    height: 380px;
+    grid-template-columns: 1fr 1.3fr;
+    height: 400px;
     gap: 20px;
 }
 
@@ -45,67 +46,68 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: var(--soft-pink) !important; /* Acento Rosa */
+    border: none;
 }
 
-.arrow-icon { font-size: 3rem; font-weight: bold; }
+.arrow-icon { font-size: 3.5rem; font-weight: 800; color: var(--dark-accent); }
 
 .hero-visual {
-    background: var(--primary-blue);
-    border-radius: 30px;
-    color: white;
-    padding: 30px;
+    background: var(--sky-blue); /* Acento Azul */
+    border-radius: 32px;
+    color: var(--white);
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(103, 198, 254, 0.3);
 }
 
 .logo-text {
-    font-size: 7rem;
+    font-size: 7.5rem;
     font-weight: 900;
     line-height: 0.8;
-    letter-spacing: -4px;
+    letter-spacing: -5px;
     text-transform: uppercase;
+    filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.1));
 }
 
 .year-label {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
-    font-size: 2rem;
-    font-weight: bold;
-    background: white;
-    color: black;
-    padding: 5px 15px;
-    border-radius: 10px;
+    top: 40px;
+    right: 40px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border: 2px solid var(--white);
+    padding: 8px 15px;
+    border-radius: 50px;
 }
 
 /* Nav */
 .glass-nav {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    padding: 12px 30px;
     border-radius: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 20px;
-    z-index: 100;
+    border: 1px solid rgba(255,255,255,0.5);
 }
 
 .menu a {
     text-decoration: none;
-    color: #888;
+    color: #94a3b8;
     margin-right: 25px;
     font-weight: 600;
     transition: var(--transition);
 }
 
-.menu a.active, .menu a:hover { color: var(--text-dark); }
+.menu a.active { color: var(--sky-blue); }
+.menu a:hover { color: var(--soft-pink); }
 
-/* Profile Card */
+/* Profile Layout */
 .content-layout {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -113,78 +115,56 @@ body {
 }
 
 .profile-card {
-    background: url('https://via.placeholder.com/400x500') center/cover; /* Reemplazar con tu foto */
-    background-color: #222;
-    border-radius: 24px;
-    height: 400px;
+    background: linear-gradient(45deg, var(--soft-pink), var(--sky-blue));
+    border-radius: 32px;
+    height: 420px;
     position: relative;
     overflow: hidden;
-    color: white;
 }
 
 .profile-overlay {
     position: absolute;
     bottom: 0;
-    padding: 30px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    width: 100%;
+    padding: 40px;
+    color: var(--white);
 }
 
-/* Social Grid */
+.profile-overlay h2 span {
+    color: var(--dark-accent);
+    background: var(--white);
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+/* Social Buttons */
 .social-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 15px;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .social-item {
-    padding: 20px;
-    border-radius: 18px;
+    padding: 22px;
+    border-radius: 24px;
     text-align: center;
     text-decoration: none;
-    font-weight: bold;
-    text-transform: lowercase;
+    font-weight: 800;
     transition: var(--transition);
 }
 
-.social-item:hover { transform: translateY(-5px); }
-.social-item.dark { background: var(--text-dark); color: white; }
-.social-item.blue { background: var(--primary-blue); color: white; }
-.social-item.white { background: white; color: black; border: 1px solid #ddd; }
+.social-item.pink { background: var(--soft-pink); color: var(--dark-accent); }
+.social-item.blue { background: var(--sky-blue); color: var(--white); }
+.social-item.dark { background: var(--dark-accent); color: var(--white); }
 
-/* Skills Section */
-.skills-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.social-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-.tool-circle {
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 8px;
-}
-
-.tag-cloud .tag {
-    background: #e0e0e0;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin: 4px;
-    display: inline-block;
-}
-
-/* Responsividad */
+/* Responsive */
 @media (max-width: 768px) {
-    .hero-grid, .content-layout, .skills-footer {
-        grid-template-columns: 1fr;
-    }
+    .hero-grid, .content-layout { grid-template-columns: 1fr; }
     .hero-grid { height: auto; }
+    .logo-text { font-size: 5rem; }
 }
