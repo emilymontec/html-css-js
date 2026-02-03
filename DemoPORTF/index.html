@@ -5,62 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio DEMO</title>
     <link rel="stylesheet" href="styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="main-container">
-    
-    <section class="hero-grid">
-        <div class="hero-info card">
-            <div class="header-top">
-                <div class="arrow-icon">↘</div>
-                <div class="status-badge">Available for Work</div>
+    <div class="wide-container">
+        <header class="hero-card">
+            <div class="hero-content-left">
+                <div class="main-icon">↗</div>
+                <div class="stack-tags">
+                    <span>#Frontend_Dev</span>
+                    <span>#Backend_Architecture</span>
+                    <span>#Cloud_DevOps</span>
+                    <span>#UI_UX_Implementation</span>
+                </div>
             </div>
-            <div class="tags">
-                <span>#Illustration</span> <span>#UI_UX</span><br>
-                <span>#Branding</span> <span>#Motion</span>
+            <div class="hero-visual-right">
+                <div class="hero-title-group">
+                    <span class="year-label">2026</span>
+                    <h1>SOFTWARE<br>ENGINEER<br>PORTFOLIO</h1>
+                </div>
             </div>
-        </div>
-        <div class="hero-visual">
-            <span class="year-label">2026</span>
-            <div class="logo-text">CREA<br>TI<br>VE</div>
-        </div>
-    </section>
+        </header>
 
-    <nav class="glass-nav">
-        <div class="menu">
-            <a href="#" class="active">Profile</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="nav-utils">
-            <button class="icon-btn">✨</button>
-        </div>
-    </nav>
-
-    <main class="content-layout">
-        <div class="profile-card">
-            <div class="profile-overlay">
-                <h2>Hi there!<br>I'm <span>Qorry</span></h2>
-                <p>Graphic Designer & Illustrator</p>
+        <nav class="nav-bar">
+            <div class="nav-links">
+                <a href="#" class="active">Profile</a>
+                <a href="#">Projects</a>
+                <a href="#">Stack</a>
+                <a href="#">Contact</a>
             </div>
-        </div>
+            <div class="nav-status">
+                <span class="status-dot"></span> System Status: Online
+            </div>
+        </nav>
 
-        <div class="bio-section">
-            <div class="card intro-box">
-                <h3>Introduction</h3>
-                <p>Explorando la intersección entre el diseño técnico y la estética visual con una paleta vibrante y funcional.</p>
+        <main class="dashboard-grid">
+            <div class="card profile-card">
+                <div class="profile-content">
+                    <h2>Hello,<br>I'm <span>Qorry</span></h2>
+                    <p>Crafting high-performance applications with modern tech stacks.</p>
+                </div>
             </div>
 
-            <div class="social-grid">
-                <a href="#" class="social-item pink">email</a>
-                <a href="#" class="social-item blue">linkedin</a>
-                <a href="#" class="social-item dark">behance</a>
+            <div class="intro-section">
+                <div class="card intro-card">
+                    <div class="card-header">
+                        <h3>About the Dev</h3>
+                        <span>⌄</span>
+                    </div>
+                    <p>I focus on building scalable web ecosystems. From robust REST APIs to pixel-perfect reactive interfaces, my goal is code quality and system efficiency.</p>
+                </div>
+                
+                <div class="tech-grid">
+                    <div class="card tech-box pink-bg">
+                        <h4>Frontend</h4>
+                        <p>React, Vue, Next.js</p>
+                    </div>
+                    <div class="card tech-box blue-bg">
+                        <h4>Backend</h4>
+                        <p>Node, Go, Python</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
-</div>
+        </main>
+
+        <section class="footer-grid">
+            <div class="card footer-item">
+                <h3>Latest Deployment</h3>
+                <div class="deploy-info">
+                    <strong>Project Alpha</strong>
+                    <span class="tag-blue">Success</span>
+                </div>
+            </div>
+            <div class="card footer-item social-links">
+                <a href="#" class="social-btn github">GitHub</a>
+                <a href="#" class="social-btn linkedin">LinkedIn</a>
+            </div>
+        </section>
+    </div>
 
 </body>
 </html>
